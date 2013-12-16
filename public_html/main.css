@@ -2,6 +2,7 @@
     width: 200px;
     background-color: #eee;
     overflow: hidden;
+    border-radius: 10px;
 }
 #calendarSlider{
     position: relative;
@@ -42,6 +43,10 @@
 }
 .event{
     background-color: #32CD32;
+}
+.active a{
+    background-color: #2e81fe;
+    color: #fff;
 }
 #Day-events-content{
     clear: both;

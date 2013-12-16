@@ -35,9 +35,11 @@ function dateObj() {
     this.buildMonth = function() {
         var numDays = this.getDaysMonth();
         var plainDays = this.getPlainDays();
-        var year = this.year;
         var html = '';
 
+//
+//Building PlainDays + Days without events
+//
         $('#month').append(function() {
             for (var i = -plainDays; i < numDays; i++) {
                 if (i <= -1) {
@@ -48,22 +50,28 @@ function dateObj() {
             }
             return html;
         });
-
+    }
 //        
 //GetEvents - we selecting day by click and get Events
 //
 //get id from list
 //and find events by date
 
+    this.getEvents = function() {
+        var year = this.year;
+
         $('#month').on("click", ".event", function() {
+            
             var id = $(this).attr('id');
             var matches = Calendar.events.filter(function(val, index, array) {
                 return parseInt(val.Day) === parseInt(id) && parseInt(val.Year) === parseInt(year);
             });
+            var matchLength = matches.length;
 
             $('#Day-events-content').html(function() {
+                $('#month li').removeClass("active");
                 var html = '<ul>';
-                for (i = 0; i < matches.length; i++) {
+                for (i = 0; i < matchLength; i++) {
                     var date = matches[i].Day + '-' + matches[i].Month + '-' + matches[i].Year;
                     var hour = matches[i].Hour;
                     html += '<li>';
@@ -72,24 +80,26 @@ function dateObj() {
                     html += '<p class="hidden">' + matches[i].Desc + '</p></li>';
                 }
                 html += '</ul>';
+                $('#' + id).toggleClass("active");
                 return html;
             });
         });
 
 //END Get Events
     }
-    this.slideUpComm = function (){
-       $("#Day-events-content p").addClass("hidden").slideUp("fast");
-    } 
+    this.slideUpComm = function() {
+        $("#Day-events-content p").addClass("hidden").slideUp("fast");
+    }
     this.showhideEvents = function() {
-        
+
         $("#Day-events-content").on("click", ".eventsToggle", function() {
             var elem = $(this).next();
-            if (elem){
-                
+            if (elem.hasClass("hidden")) {
+                self.slideUpComm();
+                $(elem).removeClass("hidden").slideDown("slow");
+            } else {
+                self.slideUpComm();
             }
-            self.slideUpComm();
-            
         });
     }
 
@@ -98,6 +108,7 @@ function dateObj() {
             var id = $(this).attr('id');
             var listwidth = $('#month').width();
 
+            self.slideUpComm();
             slideWidth = (id === 'previous') ? listwidth : -listwidth;
 
             $("#month").animate(
@@ -111,14 +122,12 @@ function dateObj() {
 
         });
     }
-    this.SlideEvents = function() {
-        this.slideCalendar();
-    }
 }
 $(document).ready(function() {
     var calendar = new dateObj();
     calendar.buildMonth();
     calendar.markEvents();
+    calendar.getEvents();
     calendar.showhideEvents();
     calendar.slideCalendar();
 });
