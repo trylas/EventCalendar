@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 #eventCalendar{
     width: 200px;
     background-color: #eee;
@@ -6,6 +10,7 @@
 }
 #calendarSlider{
     position: relative;
+    min-height: 260px;
 }
 #weekDays{
     list-style: none;
@@ -33,13 +38,12 @@
     display: block;
     line-height: 28px;
     font-size: 0.8em;
-    text-decoration:none;
-    color: #666;
     border: solid 1px;
     border-color: #fff #bcbcbc #bcbcbc #eee;
 }
 .empty{
     min-height: 29px;
+    background-color: #ccc;
 }
 .event{
     background-color: #32CD32;
@@ -56,7 +60,6 @@
     margin: 0;
 }
 #Day-events-content a{
-    text-decoration: none;
     display: block;
 }
 #Day-events-content p{
@@ -64,4 +67,16 @@
 }
 .hidden{
     display: none;
+}
+.today {
+    background-color: #ccc;
+}
+#calendarNav{
+    padding: 0;
+    margin: 0;
+}
+#calendarNav li{
+    text-align: center;
+    display: inline-block;
+    width: 32%;
 }
