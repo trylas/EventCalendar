@@ -86,7 +86,7 @@ function dateObj() {
         var plainDays = this.getPlainDays();
         var html = '';
 
-        $('#calendarNav li').eq(1).html($.trim(this.getNameMonth()));
+        $('#calendarNav li').eq(1).html($.trim(this.getNameMonth() + ' ' + this.year));
 
         $('#month').append(function() {
             for (var i = -plainDays; i < numDays; i++) {
@@ -142,13 +142,17 @@ function dateObj() {
             var date = matches[i].Day + '-' + matches[i].Month + '-' + matches[i].Year;
             var hour = matches[i].Hour;
             html += '<li>';
-            html += '<time date=' + date + '><em>Date: ' + date + '</em>'+' '+'<small>hour: ' + hour + '</small></time>';
+            html += '<time date=' + date + '><em>Date: ' + date + '</em>' + ' ' + '<small>hour: ' + hour + '</small></time>';
             html += '<a href="#" class="eventsToggle">' + matches[i].Title + '</a></li>';
         }
         html += '</ul>';
         $('#Day-events-content').html(html);
     }
-
+    this.monthHeight = function() {
+         var t = $('#Day-events-content').position();
+//         $('#calendarPage').css('min-height',t.top + 'px');
+//        console.log(t.top);
+    }
 //        
 //getDayEvents - we selecting day by click and get Events
 //
@@ -175,7 +179,7 @@ function dateObj() {
                     var date = matches[i].Day + '-' + matches[i].Month + '-' + matches[i].Year;
                     var hour = matches[i].Hour;
                     html += '<li>';
-                    html += '<time date=' + date + '><em>Date: ' + date + '</em>'+' '+'<small>hour: ' + hour + '</small></time>';
+                    html += '<time date=' + date + '><em>Date: ' + date + '</em>' + ' ' + '<small>hour: ' + hour + '</small></time>';
                     html += '<a href="#" class="eventsToggle">' + matches[i].Title + '</a>';
                     html += '<p class="hidden">' + matches[i].Desc + '</p></li>';
                 }
@@ -214,7 +218,6 @@ function dateObj() {
 
     this.slideCalendar = function() {
         $('#calendartopNav').on("click", ".slide", function() {
-            console.log('succ');
             var id = $(this).attr('id');
             var listwidth = $('#month').width();
 
@@ -242,7 +245,7 @@ function dateObj() {
 $(document).ready(function() {
     var calendar = new dateObj();
     calendar.buildMonth();
+    calendar.monthHeight();
     calendar.showhideEvents();
     calendar.slideCalendar();
-
 });

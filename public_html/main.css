@@ -13,7 +13,6 @@ a {
     border: 1px solid #bcbcbc;
 }
 #calendarSlider{
-    min-height: 100px;
     position: relative;
 }
 #weekDays{
@@ -26,18 +25,23 @@ a {
     text-align: center;
     float: left;
     border-top: 1px solid #bcbcbc;
+    border-bottom: 1px solid #bcbcbc;
     line-height: 28px;
+    background-color: #d9d9d9;
+    color: #777;
 }
 #calendarPage {
     background: linear-gradient(0deg,#bfbfbf,#fff);
     width: 100%;
-    float: left;
+    min-height: 190px;
+    overflow: hidden;
 }
 #month{
     list-style: none;
     padding: 0;
+    margin: 0;
+    overflow: auto;
 }
-
 .eventCal {
     width: 14.28%;
     text-align: center;
@@ -46,12 +50,13 @@ a {
 .eventCal a{
     display: block;
     line-height: 28px;
-    font-size: 0.8em;
+    font-size: 0.9em;
     border: solid 1px;
     border-color: #f2f2f2 #c9c9c9 #c9c9c9 #f2f2f2;
 }
 .empty{
     min-height: 29px;
+    background-color: #d9d9d9;
 }
 .event{
     background-color: #32CD32;
@@ -61,7 +66,7 @@ a {
     color: #fff;
 }
 #Day-events-content{
-    float: left;
+    clear: both;
     padding: 10px;
 }
 #Day-events-content ul{
@@ -87,6 +92,11 @@ a {
     padding: 0;
     margin: 0;
     line-height: 28px;
+    color: #fff;
+    background: linear-gradient(180deg,#1C7BFF,#1662CC);
+}
+#calendarNav a {
+    color: #114A99;
 }
 #calendarNav li{
     text-align: center;
