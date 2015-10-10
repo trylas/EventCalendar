@@ -9,6 +9,8 @@ function dateObj() {
 //
 //function changeDate takes negative or positive number
 //to take next or previous month
+//my test comment or even two
+//yes testing the git 
 //
     this.changeDate = function(Arg) {
         var Arg;
@@ -20,7 +22,7 @@ function dateObj() {
         this.year = current.getFullYear();
     }
 
-//    
+//
 //GetMonth replace number of Mont to Name
 //
     this.getNameMonth = function() {
@@ -153,7 +155,7 @@ function dateObj() {
 //         $('#calendarPage').css('min-height',t.top + 'px');
 //        console.log(t.top);
     }
-//        
+//
 //getDayEvents - we selecting day by click and get Events
 //
 //get id from list
