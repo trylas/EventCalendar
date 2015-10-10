@@ -10,7 +10,7 @@ function dateObj() {
 //function changeDate takes negative or positive number
 //to take next or previous month
 //my test comment or even two
-//yes testing the git 
+//yes testing the git
 //
     this.changeDate = function(Arg) {
         var Arg;
